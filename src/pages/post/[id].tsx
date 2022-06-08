@@ -16,7 +16,7 @@ export default function PostPage({ recordMap, post }: any) {
       <Header />
       <AsideSocials />
       <div className='mt-16'>
-        <h1 className='text-center my-16 text-3xl font-semibold'>
+        <h1 className='text-center my-16 text-3xl text-gray-900 font-semibold'>
           {post.properties.post.title[0].plain_text}
         </h1>
         <NotionRenderer recordMap={recordMap} />
