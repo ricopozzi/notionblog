@@ -3,6 +3,7 @@ import Image from "next/image";
 import { AuthorDectoration } from "./AuthorDecoration";
 import { useContext } from "react";
 import { bgContext } from "../lib/bgimageurl";
+import { Blurhash } from "react-blurhash";
 
 interface PostCardProps {
   title: string;
@@ -35,17 +36,28 @@ export function PostCard({
         flex flex-col rounded-2xl items-center pb-4 cursor-pointer mx-auto'
       >
         <div className='relative w-[400px] h-[200px]'>
-          <Image
-            src={bgImage}
-            layout='fill'
-            objectFit='cover'
-            className='md:rounded-2xl'
-            quality={75}
-            placeholder='blur'
-            blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOUqwcAAMEAnwarUJAAAAAASUVORK5CYII='
-            sizes='80vw'
-            priority
-          />
+          {bgImage ? (
+            <Image
+              src={bgImage}
+              layout='fill'
+              objectFit='cover'
+              className='md:rounded-2xl'
+              quality={75}
+              placeholder='blur'
+              blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOUqwcAAMEAnwarUJAAAAAASUVORK5CYII='
+              sizes='80vw'
+              priority
+            />
+          ) : (
+            <Blurhash
+              hash='LEHV6nWB2yk8pyo0adR*.7kCMdnj'
+              width={400}
+              height={300}
+              resolutionX={32}
+              resolutionY={32}
+              punch={1}
+            />
+          )}
         </div>
         <div className='px-2 w-full'>
           <p className='text-3xl font-semibold text-gray-900 my-4 mr-auto'>
