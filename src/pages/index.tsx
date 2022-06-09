@@ -42,9 +42,10 @@ const Home: NextPage = ({ posts, descriptionPost }: any) => {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   //@ts-ignore
   const response = await notion.databases.query({ database_id: databaseId });
+  console.log(response);
 
   const indexPageProps = await notionX.getPage(
     "fc9679ce8afe425483fa7dab1eeab633"
