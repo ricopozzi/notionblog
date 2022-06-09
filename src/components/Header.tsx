@@ -29,6 +29,8 @@ export function Header({ bgImage }: HeaderProps) {
             width={1480}
             height={288}
             layout='fixed'
+            placeholder='blur'
+            blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOUqwcAAMEAnwarUJAAAAAASUVORK5CYII='
             className='object-center md:rounded-3xl'
           />
         ) : (
@@ -36,7 +38,7 @@ export function Header({ bgImage }: HeaderProps) {
         )}
       </div>
       <div className='w-36 h-36 bg-white rounded-full absolute  top-[17rem] flex justify-center items-center shadow-gray-500 shadow-2xl'>
-        <Image src='/avatar.jpg' className='rounded-full' layout='fill' />
+        <Image src={`${avatarUrl}`} className='rounded-full' layout='fill' />
       </div>
     </section>
   );
