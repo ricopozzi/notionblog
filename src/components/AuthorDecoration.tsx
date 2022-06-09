@@ -12,7 +12,7 @@ export function AuthorDectoration({
   return (
     <div
       style={{ backgroundColor: bgColor, opacity: 0.4 }}
-      className={`w-24 min-w-24 h-6 flex justify-center items-center px-1 text-xs text-white font-normal rounded-sm mr-auto`}
+      className={`w-24 min-w-24 h-6 flex justify-center items-center px-1 text-xs text-white font-normal rounded-sm`}
     >
       {authorName}
     </div>

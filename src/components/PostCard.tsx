@@ -27,7 +27,7 @@ export function PostCard({
     <>
       <div
         onClick={async () => {
-          // await handleBgChange(bgImage);
+          await handleBgChange(bgImage);
           return router.push(`/post/${id}`);
         }}
         className='max-w-[340px] md:max-w-[400px] md:w-[30rem] min-h-[25rem] hover:bg-stone-200/70 hover:shadow-2xl shadow-stone-400
@@ -52,13 +52,15 @@ export function PostCard({
             {title}
           </p>
           <p className='my-2 text-sm mr-auto text-gray-600'>{description}</p>
-          {author.map((auth: any, index: any) => (
-            <AuthorDectoration
-              key={index}
-              authorName={auth.name}
-              bgColor={auth.color}
-            />
-          ))}
+          <div className='flex gap-x-2'>
+            {author.map((auth: any, index: any) => (
+              <AuthorDectoration
+                key={index}
+                authorName={auth.name}
+                bgColor={auth.color}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
