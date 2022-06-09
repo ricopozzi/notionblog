@@ -25,7 +25,7 @@ export default function PostPage({ recordMap, post }: any) {
   );
 }
 
-export async function getServerSideProps(ctx: GetStaticPropsContext) {
+export async function getStaticProps(ctx: GetStaticPropsContext) {
   const { params } = ctx;
   console.log(params);
 
@@ -39,22 +39,23 @@ export async function getServerSideProps(ctx: GetStaticPropsContext) {
       recordMap,
       post: response,
     },
+    revalidate: 10,
   };
 }
 
-// export async function getStaticPaths() {
-//   //@ts-ignore
-//   const response = await notion.databases.query({ database_id: databaseId });
-//   const arrayOfIds = response.results.map((item) => item.id);
+export async function getStaticPaths() {
+  //@ts-ignore
+  const response = await notion.databases.query({ database_id: databaseId });
+  const arrayOfIds = response.results.map((item) => item.id);
 
-//   return {
-//     paths: arrayOfIds.map((id) => {
-//       return {
-//         params: {
-//           id: id,
-//         },
-//       };
-//     }),
-//     fallback: "blocking",
-//   };
-// }
+  return {
+    paths: arrayOfIds.map((id) => {
+      return {
+        params: {
+          id: id,
+        },
+      };
+    }),
+    fallback: "blocking",
+  };
+}
