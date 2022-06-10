@@ -4,13 +4,17 @@ import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 import "katex/dist/katex.min.css";
 import { BgContext } from "../lib/bgimageurl";
+import { FuseSearchContext } from "../lib/fusesearch";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     //@ts-ignore
-    <BgContext>
-      <Component {...pageProps} />
-    </BgContext>
+    <FuseSearchContext>
+      {/*@ts-ignore*/}
+      <BgContext>
+        <Component {...pageProps} />
+      </BgContext>
+    </FuseSearchContext>
   );
 }
 

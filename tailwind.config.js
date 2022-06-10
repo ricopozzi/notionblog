@@ -5,7 +5,11 @@ module.exports = {
 
   ],
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        "width": 'width'
+      }
+    },
   },
   plugins: [],
 }

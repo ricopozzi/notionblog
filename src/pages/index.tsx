@@ -1,10 +1,42 @@
 import type { NextPage } from "next";
+import dynamic from "next/dynamic";
 import { PostCard } from "../components/PostCard";
 import { databaseId, notion, notionX } from "../lib/notion";
 import { NotionRenderer } from "react-notion-x";
 import { Header } from "../components/Header";
 import { AsideSocials } from "../components/AsideSocials";
+import { fuseSearchContext } from "../lib/fusesearch";
+import { useContext, useEffect } from "react";
 
+//@ts-ignore
+const Code = dynamic(() =>
+  import("react-notion-x/build/third-party/code").then((m) => m.Code)
+);
+//@ts-ignore
+
+const Collection = dynamic(() =>
+  import("react-notion-x/build/third-party/collection").then(
+    (m) => m.Collection
+  )
+);
+//@ts-ignore
+
+const Equation = dynamic(() =>
+  import("react-notion-x/build/third-party/equation").then((m) => m.Equation)
+);
+const Pdf = dynamic(
+  //@ts-ignore
+  () => import("react-notion-x/build/third-party/pdf").then((m) => m.Pdf),
+  {
+    ssr: false,
+  }
+);
+const Modal = dynamic(
+  () => import("react-notion-x/build/third-party/modal").then((m) => m.Modal),
+  {
+    ssr: false,
+  }
+);
 interface PostProps {
   id: string;
   properties: any;
@@ -12,6 +44,12 @@ interface PostProps {
 }
 
 const Home: NextPage = ({ posts, descriptionPost }: any) => {
+  const { handleTitleList } = useContext(fuseSearchContext);
+
+  useEffect(() => {
+    handleTitleList(posts);
+  }, [posts]);
+
   return (
     <>
       <Header />

@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { NavBar } from "./NavBar";
+import Fuse from "fuse.js";
+import { fuseSearchContext } from "../lib/fusesearch";
 
 interface HeaderProps {
   bgImage?: string;
@@ -21,7 +24,7 @@ export function Header({ bgImage }: HeaderProps) {
 
   return (
     <section className='w-full h-96 flex flex-col justify-center items-center overflow-hidden'>
-      <div className='w-full h-12 bg-white'></div>
+      <NavBar avatarUrl={avatarUrl} />
       <div className='w-full md:max-w-[1480px] h-72 bg-gradient-to-r from-[#12c2e9] via-[#c471ed] to-[#f64f59] my-auto mx-auto md:rounded-3xl'>
         {bgImage ? (
           <Image
