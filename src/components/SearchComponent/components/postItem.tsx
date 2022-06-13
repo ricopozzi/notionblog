@@ -6,7 +6,6 @@ interface PostItemProps {
   id: string;
   routerPush?: any;
   author: any;
-  bgImage: string;
 }
 
 export function PostItem({ id, title, routerPush, author }: PostItemProps) {
