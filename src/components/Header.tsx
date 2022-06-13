@@ -23,13 +23,13 @@ export function Header({ bgImage }: HeaderProps) {
   }, []);
 
   return (
-    <section className='w-full h-96 flex flex-col justify-center items-center overflow-hidden'>
+    <section className='w-full h-96 flex flex-col justify-center items-center overflow-hidden mx-auto'>
       <NavBar avatarUrl={avatarUrl} />
       <div className='w-full md:max-w-[1180px] h-72 bg-gradient-to-r from-[#12c2e9] via-[#c471ed] to-[#f64f59] my-auto mx-auto md:rounded-3xl'>
         {bgImage ? (
           <Image
             src={`${bgImage}`}
-            width={1480}
+            width={1180}
             height={288}
             layout='fixed'
             placeholder='blur'
