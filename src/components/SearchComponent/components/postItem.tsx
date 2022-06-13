@@ -1,20 +1,31 @@
-import { withCoalescedInvoke } from "next/dist/lib/coalesced-function";
 import { useRouter } from "next/router";
+import { AuthorDectoration } from "../../AuthorDecoration";
 
 interface PostItemProps {
   title: string;
   id: string;
-  onClick: any;
+  routerPush?: any;
+  author: any;
 }
 
-export function PostItem({ id, title }: PostItemProps) {
+export function PostItem({ id, title, routerPush, author }: PostItemProps) {
   const router = useRouter();
-  console.log(id);
+
   return (
-    <div className='w-full h-8 border rounded-md flex justify-start  items-center px-2 cursor-pointer hover:bg-gray-200/80'>
-      <p className='text-black text-sm flex justify-center item-center'>
+    <div
+      onClick={routerPush}
+      className='z-30 w-full min-h-8 border rounded-md flex flex-col items-start duration-200 transition-all p-2 cursor-pointer hover:bg-gray-200/80'
+    >
+      <p className='text-black text-sm flex justify-center item-center duration-200 delay-200 transition-all'>
         {title}
       </p>
+      <div className='flex gap-x-2'>
+        {author.map((item: { name: string }) => (
+          <div className='text-[0.7rem] px-1 bg-gray-200/70 rounded-sm'>
+            {item.name}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

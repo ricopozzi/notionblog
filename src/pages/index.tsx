@@ -52,27 +52,29 @@ const Home: NextPage = ({ posts, descriptionPost }: any) => {
 
   return (
     <>
-      <Header />
-      <AsideSocials />
-      <div className='mt-16'>
-        <NotionRenderer recordMap={descriptionPost} />
-      </div>
-      <div className='pl-4 md:pl-0 max-w-[1000px] mx-auto h-10 border-b flex text-xl font-medium text-gray-700'>
-        Blog Posts
-      </div>
+      <div className='overflow-hidden'>
+        <Header />
+        <AsideSocials />
+        <div className='mt-16'>
+          <NotionRenderer recordMap={descriptionPost} />
+        </div>
+        <div className='pl-4 md:pl-0 max-w-[1000px] mx-auto h-10 border-b flex text-xl font-medium text-gray-700'>
+          Blog Posts
+        </div>
 
-      <div className='max-w-[1000px] flex flex-col items-center md:justify-between mx-auto md:grid self-center md:grid-cols-2 gap-y-8 mt-6'>
-        {posts.map((post: PostProps, index: number) => (
-          <PostCard
-            key={post.id}
-            id={post.id}
-            title={post.properties.post.title[0].plain_text}
-            // author={post.properties.author.multi_select[0]}
-            author={posts[index].properties.author.multi_select}
-            bgImage={post.properties.bgImage.files[0].file.url}
-            description={post.properties.description.rich_text[0].plain_text}
-          />
-        ))}
+        <div className='max-w-[1000px] flex flex-col items-center md:justify-between mx-auto md:grid self-center md:grid-cols-2 gap-y-8 mt-6'>
+          {posts.map((post: PostProps, index: number) => (
+            <PostCard
+              key={post.id}
+              id={post.id}
+              title={post.properties.post.title[0].plain_text}
+              // author={post.properties.author.multi_select[0]}
+              author={posts[index].properties.author.multi_select}
+              bgImage={post.properties.bgImage.files[0].file.url}
+              description={post.properties.description.rich_text[0].plain_text}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

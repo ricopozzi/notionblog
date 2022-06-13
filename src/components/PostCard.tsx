@@ -29,23 +29,23 @@ export function PostCard({
       <div
         onClick={async () => {
           await handleBgChange(bgImage);
-          return router.push(`/post/${id}`);
+          router.push(`/post/${id}`);
         }}
         className='max-w-[340px] md:max-w-[400px] md:w-[30rem] min-h-[25rem] hover:bg-stone-200/70 hover:shadow-2xl shadow-stone-400
         hover:border delay-75 duration-150 ease-in-out
-        flex flex-col rounded-2xl items-center pb-4 cursor-pointer mx-auto'
+        flex flex-col rounded-2xl items-center py-4 cursor-pointer mx-auto'
       >
-        <div className='relative w-[400px] h-[200px]'>
+        <div className='relative w-[400px] h-[200px] flex justify-center'>
           {bgImage ? (
             <Image
               src={bgImage}
-              layout='fill'
+              width={340}
+              height={200}
               objectFit='cover'
-              className='md:rounded-2xl'
+              className='rounded-2xl'
               quality={75}
               placeholder='blur'
               blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOUqwcAAMEAnwarUJAAAAAASUVORK5CYII='
-              sizes='80vw'
               priority
             />
           ) : (
@@ -59,7 +59,7 @@ export function PostCard({
             />
           )}
         </div>
-        <div className='px-2 w-full'>
+        <div className='px-7 w-full'>
           <p className='text-3xl font-semibold text-gray-900 my-4 mr-auto'>
             {title}
           </p>

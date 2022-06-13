@@ -10,7 +10,7 @@ interface fuseSearchContextProps {
 }
 
 const fuseOptions = {
-  includeScore: true,
+  threshhold: 0.6,
   keys: ["title", "id"],
 };
 
@@ -22,13 +22,14 @@ export const FuseSearchContext: React.FC = ({ children }: any) => {
   const fuse = new Fuse(titleList, fuseOptions);
 
   const handleTitleList = (data: any) => {
-    console.log(data);
     const titleArray = data.map(
       //@ts-ignore
       (item) => {
+        console.log(item.properties.author.multi_select);
         return {
           title: item.properties.post.title[0].plain_text,
           id: item.id,
+          author: item.properties.author.multi_select,
         };
       }
     );

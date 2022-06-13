@@ -19,10 +19,10 @@ export function NavBar({ avatarUrl }: NavbarProps) {
   };
 
   return (
-    <nav className='w-full max-w-[1480px] h-14 pt-2 flex justify-between'>
+    <nav className='w-full max-w-[1180px] h-14 pt-2 flex justify-between px-2'>
       <div
         onClick={pushToHomePage}
-        className='md:w-36 h-8 rounded-md hover:bg-gray-300/50 flex items-center px-2 gap-x-4 cursor-pointer'
+        className='md:min-w-36 h-8 rounded-md hover:bg-gray-300/50 flex items-center px-2 gap-x-4 cursor-pointer'
       >
         <Image
           src={`${avatarUrl}`}
@@ -30,7 +30,7 @@ export function NavBar({ avatarUrl }: NavbarProps) {
           height={22}
           className='rounded-full '
         />
-        <p className='font-medium text-gray-500'>Enrico Pozzi</p>
+        <p className='font-medium text-sm text-gray-500'>Enrico Pozzi</p>
       </div>
       <SearchComponent />
     </nav>

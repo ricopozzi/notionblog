@@ -27,7 +27,6 @@ export default function PostPage({ recordMap, post }: any) {
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   const { params } = ctx;
-  console.log(params);
 
   //@ts-ignore
   const recordMap = await notionX.getPage(params.id);
@@ -56,6 +55,6 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback: "blocking",
+    fallback: false,
   };
 }
