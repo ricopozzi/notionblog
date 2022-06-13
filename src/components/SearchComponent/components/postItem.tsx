@@ -20,8 +20,11 @@ export function PostItem({ id, title, routerPush, author }: PostItemProps) {
         {title}
       </p>
       <div className='flex gap-x-2'>
-        {author.map((item: { name: string }) => (
-          <div className='text-[0.7rem] px-1 bg-gray-200/70 rounded-sm'>
+        {author.map((item: { name: string }, index: number) => (
+          <div
+            key={index}
+            className='text-[0.7rem] px-1 bg-gray-200/70 rounded-sm'
+          >
             {item.name}
           </div>
         ))}
